@@ -1,12 +1,15 @@
 // Part 1 Growing Pains
 
 const pi = 3.1415; // pi
-// const area = pi * radius * radius; // area of circle
-const reqSpace = 0.8; // required space for each plant
+let radius = 15; // radius of plant containment area
+const area = pi * radius * radius; // area of circle
+const reqSpace = 0.8; // required space per plant
+
+let numPlantFit = area / reqSpace;
 
 let plants = 20; // starting amt of plants
 
-let weeks = 5;
+let weeks = 1;
 
 console.log(`Starting amount of plants: ${plants}`);
 
@@ -15,4 +18,12 @@ for (i = 1; i <= weeks; i++){
     plants *= 2;
 }
 console.log(`Plants after ${weeks} weeks: ${plants}`);
+console.log(`Maximum number of plants that can fit: ${numPlantFit}`);
 
+if ((plants / numPlantFit) > 0.8){ // If current plants occupy more than 80% of max vacancy
+    console.log(`Plants must be pruned.`);
+} else if ((plants / numPlantFit) >= 0.5) { // If current plants occupy between 50% - 80% of max vacancy
+    console.log(`Plants must be monitored.`); 
+} else { 
+    console.log(`Plants must be planted`);
+}
